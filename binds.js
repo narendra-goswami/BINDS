@@ -5,7 +5,7 @@
 
 // CONFIGURATION
 const STORAGE_KEY = 'bindsWorkshopData';
-const GOOGLE_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL_HERE';
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/a/macros/apu.edu.in/s/AKfycbyaWt1dEMO2KIqLdoVNAhKDpa1WSvy0YvEAqcTHR6TWc-DWu4IjSnS5yWrgvk686k7T7w/exec';
 
 // GLOBAL DATA
 let workshopData = {
@@ -382,7 +382,7 @@ function downloadIdCard(participant) {
     ctx.fillStyle = '#1b5e4e';
     ctx.font = 'bold 16px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('🌿 BINDS – Chapter 2', canvas.width / 2, 50);
+    ctx.fillText('Bridging Nature with Data Science – Chapter 2', canvas.width / 2, 50);
 
     // QR Code
     const qrImg = document.querySelector('#qrCodeContainer canvas');
