@@ -380,7 +380,7 @@ function downloadIdCard(participant) {
 
     // Title
     ctx.fillStyle = '#1b5e4e';
-    ctx.font = 'bold 16px Arial';
+    ctx.font = 'bold 15px Arial';
     ctx.textAlign = 'center';
     ctx.fillText('Bridging Nature with Data Science – Chapter 2', canvas.width / 2, 50);
 
@@ -397,23 +397,23 @@ function downloadIdCard(participant) {
     
       // ID
     ctx.fillStyle = '#1b5e4e';
-    ctx.font = 'bold 16px Arial';
+    ctx.font = 'bold 15px Arial';
     ctx.fillText(participant.id, canvas.width / 2, 350);
 
     // Name
     ctx.fillStyle = '#1b5e4e';
-    ctx.font = 'bold 16px Arial';
+    ctx.font = 'bold 15px Arial';
     ctx.textAlign = 'center';
     ctx.fillText(participant.name, canvas.width / 2, 280);
 
     // Participant label
     ctx.fillStyle = '#666';
-    ctx.font = '15px Arial';
+    ctx.font = 'bold 14px Arial';
     ctx.fillText('Participant', canvas.width / 2, 305);
 
     // Footer
     ctx.fillStyle = '#999';
-    ctx.font = '14px Arial';
+    ctx.font = '12px Arial';
     ctx.textAlign = 'center';
     ctx.fillText('29-31 January 2026', canvas.width / 2, 480);
     ctx.fillText('Azim Premji University, Bhopal', canvas.width / 2, 500);
