@@ -378,59 +378,112 @@ function downloadIdCard(participant) {
     ctx.lineWidth = 3;
     ctx.strokeRect(15, 15, canvas.width - 30, canvas.height - 30);
 
-    // Title
-    ctx.fillStyle = '#1b5e4e';
-    ctx.font = 'bold 15px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('Bridging Nature with Data Science – Chapter 2', canvas.width / 2, 50);
-
-    // QR Code
-    const qrImg = document.querySelector('#qrCodeContainer canvas');
-    if (qrImg) {
-        const qrCanvas = document.createElement('canvas');
-        qrCanvas.width = qrImg.width;
-        qrCanvas.height = qrImg.height;
-        const qrCtx = qrCanvas.getContext('2d');
-        qrCtx.drawImage(qrImg, 0, 0);
-        ctx.drawImage(qrCanvas, (canvas.width - 150) / 2, 80, 150, 150);
-    }
+    // LOGO SECTION - Load and draw logos
+    let logosLoaded = 0;
+    const totalLogos = 2;
     
-      // ID
-    ctx.fillStyle = '#1b5e4e';
-    ctx.font = 'bold 15px Arial';
-    ctx.fillText(participant.id, canvas.width / 2, 350);
+    function drawLogoAndContinue() {
+        logosLoaded++;
+        if (logosLoaded === totalLogos) {
+            drawCardContent();
+        }
+    }
 
-    // Name
-    ctx.fillStyle = '#1b5e4e';
-    ctx.font = 'bold 15px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText(participant.name, canvas.width / 2, 280);
+    // Load and draw LEFT LOGO
+    const leftLogoImg = new Image();
+    leftLogoImg.crossOrigin = 'anonymous';
+    leftLogoImg.src = 'https://raw.githubusercontent.com/narendra-goswami/BINDS/main/binds-logo.png';
+    leftLogoImg.onload = () => {
+        // Draw left logo (top-left corner)
+        const logoWidth = 60;
+        const logoHeight = 60;
+        ctx.drawImage(leftLogoImg, 30, 30, logoWidth, logoHeight);
+        drawLogoAndContinue();
+    };
+    leftLogoImg.onerror = () => {
+        console.warn('Left logo failed to load');
+        drawLogoAndContinue();
+    };
 
-    // Participant label
-    ctx.fillStyle = '#666';
-    ctx.font = 'bold 14px Arial';
-    ctx.fillText('Participant', canvas.width / 2, 305);
+    // Load and draw RIGHT LOGO
+    const rightLogoImg = new Image();
+    rightLogoImg.crossOrigin = 'anonymous';
+    rightLogoImg.src = 'https://raw.githubusercontent.com/narendra-goswami/BINDS/main/apu-logo.png';
+    rightLogoImg.onload = () => {
+        // Draw right logo (top-right corner)
+        const logoWidth = 60;
+        const logoHeight = 60;
+        ctx.drawImage(rightLogoImg, canvas.width - 90, 30, logoWidth, logoHeight);
+        drawLogoAndContinue();
+    };
+    rightLogoImg.onerror = () => {
+        console.warn('Right logo failed to load');
+        drawLogoAndContinue();
+    };
 
-    // Footer
-    ctx.fillStyle = '#999';
-    ctx.font = '12px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('29-31 January 2026', canvas.width / 2, 480);
-    ctx.fillText('Azim Premji University, Bhopal', canvas.width / 2, 500);
+    // DRAW CARD CONTENT (called after logos load)
+    function drawCardContent() {
+        // Title
+        ctx.fillStyle = '#1b5e4e';
+        ctx.font = 'bold 15px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Bridging Nature with Data Science – Chapter 2', canvas.width / 2, 120);
 
-    // Download
-    canvas.toBlob(function(blob) {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `BINDS_ID_${participant.id}.png`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    });
+        // QR Code
+        const qrImg = document.querySelector('#qrCodeContainer canvas');
+        if (qrImg) {
+            const qrCanvas = document.createElement('canvas');
+            qrCanvas.width = qrImg.width;
+            qrCanvas.height = qrImg.height;
+            const qrCtx = qrCanvas.getContext('2d');
+            qrCtx.drawImage(qrImg, 0, 0);
+            ctx.drawImage(qrCanvas, (canvas.width - 150) / 2, 150, 150, 150);
+        }
 
-    showAlert('✅ ID Card downloaded!', 'success');
+        // ID
+        ctx.fillStyle = '#1b5e4e';
+        ctx.font = 'bold 15px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(participant.id, canvas.width / 2, 380);
+
+        // Name
+        ctx.fillStyle = '#1b5e4e';
+        ctx.font = 'bold 15px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(participant.name, canvas.width / 2, 330);
+
+        // Participant label
+        ctx.fillStyle = '#666';
+        ctx.font = 'bold 14px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Participant', canvas.width / 2, 355);
+
+        // Footer
+        ctx.fillStyle = '#999';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('29-31 January 2026', canvas.width / 2, 480);
+        ctx.fillText('Azim Premji University, Bhopal', canvas.width / 2, 500);
+
+        // Convert to image and download
+        downloadCanvas(canvas, participant);
+    }
+
+    // Download the canvas as image
+    function downloadCanvas(canvas, participant) {
+        canvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${participant.name}-ID-${participant.id}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            showAlert('✅ ID card downloaded!', 'success');
+        }, 'image/png');
+    }
 }
 
 function loadParticipantsList() {
