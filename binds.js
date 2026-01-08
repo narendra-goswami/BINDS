@@ -362,8 +362,8 @@ function displayIdCard(participant) {
 
 function downloadIdCard(participant) {
     const canvas = document.createElement('canvas');
-    canvas.width = 400;
-    canvas.height = 550;
+    canvas.width = 300;
+    canvas.height = 450;
     const ctx = canvas.getContext('2d');
 
     // Background gradient
@@ -394,26 +394,26 @@ function downloadIdCard(participant) {
         qrCtx.drawImage(qrImg, 0, 0);
         ctx.drawImage(qrCanvas, (canvas.width - 150) / 2, 80, 150, 150);
     }
+    
+      // ID
+    ctx.fillStyle = '#1b5e4e';
+    ctx.font = 'bold 16px Arial';
+    ctx.fillText(participant.id, canvas.width / 2, 350);
 
     // Name
     ctx.fillStyle = '#1b5e4e';
-    ctx.font = 'bold 15px Arial';
+    ctx.font = 'bold 16px Arial';
     ctx.textAlign = 'center';
     ctx.fillText(participant.name, canvas.width / 2, 280);
 
     // Participant label
     ctx.fillStyle = '#666';
-    ctx.font = '12px Arial';
+    ctx.font = '15px Arial';
     ctx.fillText('Participant', canvas.width / 2, 305);
-
-    // ID
-    ctx.fillStyle = '#1b5e4e';
-    ctx.font = 'bold 18px Arial';
-    ctx.fillText(participant.id, canvas.width / 2, 350);
 
     // Footer
     ctx.fillStyle = '#999';
-    ctx.font = '11px Arial';
+    ctx.font = '14px Arial';
     ctx.textAlign = 'center';
     ctx.fillText('29-31 January 2026', canvas.width / 2, 480);
     ctx.fillText('Azim Premji University, Bhopal', canvas.width / 2, 500);
