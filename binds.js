@@ -362,8 +362,8 @@ function displayIdCard(participant) {
 
 function downloadIdCard(participant) {
     const canvas = document.createElement('canvas');
-    canvas.width = 300;
-    canvas.height = 450;
+    canvas.width = 400;
+    canvas.height = 550;
     const ctx = canvas.getContext('2d');
 
     // Background gradient
