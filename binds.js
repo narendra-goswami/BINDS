@@ -411,7 +411,7 @@ function downloadIdCard(participant) {
     rightLogoImg.src = 'https://raw.githubusercontent.com/narendra-goswami/BINDS/main/apu-logo.png';
     rightLogoImg.onload = () => {
         // Draw right logo (top-right corner)
-        const logoWidth = 60;
+        const logoWidth = 80;
         const logoHeight = 60;
         ctx.drawImage(rightLogoImg, canvas.width - 90, 30, logoWidth, logoHeight);
         drawLogoAndContinue();
@@ -425,7 +425,7 @@ function downloadIdCard(participant) {
     function drawCardContent() {
         // Title
         ctx.fillStyle = '#1b5e4e';
-        ctx.font = 'bold 15px Arial';
+        ctx.font = 'bold 16px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('Bridging Nature with Data Science – Chapter 2', canvas.width / 2, 120);
 
@@ -447,8 +447,8 @@ function downloadIdCard(participant) {
         ctx.fillText(participant.id, canvas.width / 2, 380);
 
         // Name
-        ctx.fillStyle = '#1b5e4e';
-        ctx.font = 'bold 15px Arial';
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 16px Arial';
         ctx.textAlign = 'center';
         ctx.fillText(participant.name, canvas.width / 2, 330);
 
@@ -460,7 +460,7 @@ function downloadIdCard(participant) {
 
         // Footer
         ctx.fillStyle = '#999';
-        ctx.font = '12px Arial';
+        ctx.font = '13px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('29-31 January 2026', canvas.width / 2, 480);
         ctx.fillText('Azim Premji University, Bhopal', canvas.width / 2, 500);
