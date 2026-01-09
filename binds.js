@@ -405,22 +405,6 @@ function downloadIdCard(participant) {
         drawLogoAndContinue();
     };
 
-    // Load and draw RIGHT LOGO
-    const rightLogoImg = new Image();
-    rightLogoImg.crossOrigin = 'anonymous';
-    rightLogoImg.src = 'https://raw.githubusercontent.com/narendra-goswami/BINDS/main/apu-logo.png';
-    rightLogoImg.onload = () => {
-        // Draw right logo (top-right corner)
-        const logoWidth = 80;
-        const logoHeight = 60;
-        ctx.drawImage(rightLogoImg, canvas.width - 90, 30, logoWidth, logoHeight);
-        drawLogoAndContinue();
-    };
-    rightLogoImg.onerror = () => {
-        console.warn('Right logo failed to load');
-        drawLogoAndContinue();
-    };
-
     // DRAW CARD CONTENT (called after logos load)
     function drawCardContent() {
         // Title
