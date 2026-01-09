@@ -5,7 +5,7 @@
 
 // CONFIGURATION
 const STORAGE_KEY = 'BINDSWorkshopData';
-const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/a/macros/apu.edu.in/s/AKfycbyaWt1dEMO2KIqLdoVNAhKDpa1WSvy0YvEAqcTHR6TWc-DWu4IjSnS5yWrgvk686k7T7w/exec';
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyaWt1dEMO2KIqLdoVNAhKDpa1WSvy0YvEAqcTHR6TWc-DWu4IjSnS5yWrgvk686k7T7w/exec';
 
 // GLOBAL DATA
 let workshopData = {
