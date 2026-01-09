@@ -380,7 +380,7 @@ function downloadIdCard(participant) {
 
     // LOGO SECTION - Load and draw logos
     let logosLoaded = 0;
-    const totalLogos = 2;
+    const totalLogos = 1;
     
     function drawLogoAndContinue() {
         logosLoaded++;
