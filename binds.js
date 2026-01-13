@@ -392,7 +392,7 @@ function downloadIdCard(participant) {
     // Load and draw LEFT LOGO
     const leftLogoImg = new Image();
     leftLogoImg.crossOrigin = 'anonymous';
-    leftLogoImg.src = 'https://raw.githubusercontent.com/narendra-goswami/BINDS/main/binds-logo.png';
+    leftLogoImg.src = 'https://raw.githubusercontent.com/narendra-goswami/BINDS/main/bind-logo.png';
     leftLogoImg.onload = () => {
         // Draw left logo (top-left corner)
         const logoWidth = 60;
