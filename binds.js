@@ -444,7 +444,7 @@ function downloadIdCard(participant) {
 
         // Footer
         ctx.fillStyle = '#999';
-        ctx.font = '13px Arial';
+        ctx.font = 'bold 13px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('29-31 January 2026', canvas.width / 2, 480);
         ctx.fillText('Azim Premji University, Bhopal', canvas.width / 2, 500);
